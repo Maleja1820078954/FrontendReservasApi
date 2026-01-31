@@ -38,27 +38,41 @@ export default function Login() {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={handleLogin}>
-        <input
-          type="text"
-          placeholder="Usuario"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        />
+    <div className="container center">
+      <div className="card" style={{maxWidth: 600, margin: '0 auto'}}>
+        <h2 style={{marginBottom: '0.5rem'}}>Login</h2>
+        <p className="muted">Ingresa tus credenciales para continuar</p>
 
-        <input
-          type="password"
-          placeholder="Contraseña"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
+        <form onSubmit={handleLogin} className="form spaced">
+          <div className="field">
+            <label className="form-label">Usuario</label>
+            <input
+              className="form-control"
+              type="text"
+              placeholder="Usuario"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+          </div>
 
-        <button type="submit">Ingresar</button>
-      </form>
+          <div className="field">
+            <label className="form-label">Contraseña</label>
+            <input
+              className="form-control"
+              type="password"
+              placeholder="Contraseña"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+
+          <div className="spaced">
+            <button className="btn btn-primary" type="submit">Ingresar</button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

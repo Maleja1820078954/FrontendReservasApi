@@ -5,14 +5,15 @@
 }
 
 :root {
-    --bg-900: #0b0712;
-    --bg-800: #1a0f2a;
-    --purple-700: #4c1d95;
-    --purple-500: #7c3aed;
-    --accent: #9b6cff;
-    --muted: rgba(255,255,255,0.7);
-    --glass: rgba(255,255,255,0.03);
-    --card: rgba(255,255,255,0.02);
+    --bg-main: #180425; /* único morado de fondo */
+    --bg-900: var(--bg-main);
+    --bg-800: #15031b;
+    --purple-700: #5b2bd6;
+    --purple-500: #8b5cff;
+    --accent: #b892ff;
+    --muted: rgba(255,255,255,0.75);
+    --glass: rgba(255,255,255,0.02);
+    --card: rgba(255,255,255,0.01);
     --radius: 12px;
 }
 
@@ -20,10 +21,12 @@ html, body, #root { height: 100%; }
 
 body {
     font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    background: linear-gradient(180deg, var(--bg-900), var(--bg-800));
+    background-color: var(--bg-main);
     color: white;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    background-attachment: fixed;
 }
 
 /* Layout helpers */
@@ -57,7 +60,7 @@ body {
 .btn:hover { transform: translateY(-2px); }
 
 /* Card */
-.card { background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:1rem; border-radius: var(--radius); box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
+.card { background: transparent; padding:1rem; border-radius: var(--radius); border: 1px solid rgba(255,255,255,0.03); box-shadow: 0 6px 16px rgba(0,0,0,0.22); }
 
 /* Table */
 .table { width:100%; border-collapse: collapse; }
@@ -72,13 +75,14 @@ body {
 .table-container { overflow: auto; border-radius: 12px; }
 .table-wrapper { margin-top: 1rem; }
 .table thead th {
-    background: linear-gradient(90deg, rgba(124,58,237,0.18), rgba(155,108,255,0.12));
-    backdrop-filter: blur(6px);
+    background: transparent;
+    backdrop-filter: none;
     position: sticky; top: 0; z-index: 2;
     text-transform: uppercase; letter-spacing: .04em; font-size: .9rem;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
 }
 .table tbody tr { transition: background .12s, transform .08s; }
-.table tbody tr:hover { background: rgba(255,255,255,0.02); transform: translateY(-2px); }
+.table tbody tr:hover { background: rgba(255,255,255,0.012); transform: translateY(-1px); }
 
 /* Small action buttons inside tables */
 .btn-sm { padding: 0.35rem 0.6rem; font-size: .875rem; border-radius: 8px; }
