@@ -20,24 +20,30 @@ export default function ServiceList() {
   }, []);
 
   return (
-    <div>
-      <h1>Servicios</h1>
-      <ServiceForm onSuccess={async () => {
-        try {
-          const res = await fetch("https://localhost:7250/api/services", { headers: authHeader() });
-          const data = await res.json();
-          setServices(data);
-        } catch (err) {
-          console.error(err);
-        }
-      }} />
-      <ul>
-        {services.map(s => (
-          <li key={s.id}>
-            {s.name} - ${s.price.toFixed(2)}
-          </li>
-        ))}
-      </ul>
+    <div className="container">
+      <h1 className="center">Servicios</h1>
+      <div className="card">
+        <ServiceForm onSuccess={async () => {
+          try {
+            const res = await fetch("https://localhost:7250/api/services", { headers: authHeader() });
+            const data = await res.json();
+            setServices(data);
+          } catch (err) {
+            console.error(err);
+          }
+        }} />
+      </div>
+
+      <div className="card">
+        <ul>
+          {services.map(s => (
+            <li key={s.id} className="form-row" style={{justifyContent:'space-between'}}>
+              <span>{s.name}</span>
+              <strong>${s.price.toFixed(2)}</strong>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

@@ -13,41 +13,14 @@ export default function Navbar() {
   if (!token) return null; // No mostrar navbar si no hay token
 
   return (
-    <nav style={styles.nav}>
-      <ul style={styles.ul}>
-        <li><Link to="/clients" style={styles.link}>Clientes</Link></li>
-        <li><Link to="/services" style={styles.link}>Servicios</Link></li>
-        <li><Link to="/reservations" style={styles.link}>Reservas</Link></li>
-        <li><button onClick={handleLogout} style={styles.button}>Cerrar sesión</button></li>
+    <nav className="navbar">
+      <ul className="nav-list">
+        <li><Link to="/clients" className="nav-link">Clientes</Link></li>
+        <li><Link to="/services" className="nav-link">Servicios</Link></li>
+        <li><Link to="/reservations" className="nav-link">Reservas</Link></li>
+        <li><button onClick={handleLogout} className="btn btn-danger">Cerrar sesión</button></li>
       </ul>
     </nav>
   );
 }
 
-// Estilos simples inline (puedes reemplazar con CSS)
-const styles = {
-  nav: {
-    backgroundColor: "#333",
-    padding: "10px"
-  },
-  ul: {
-    display: "flex",
-    listStyle: "none",
-    justifyContent: "space-around",
-    margin: 0,
-    padding: 0
-  },
-  link: {
-    color: "white",
-    textDecoration: "none",
-    fontWeight: "bold"
-  },
-  button: {
-    backgroundColor: "#ff4d4d",
-    color: "white",
-    border: "none",
-    padding: "5px 10px",
-    cursor: "pointer",
-    fontWeight: "bold"
-  }
-};

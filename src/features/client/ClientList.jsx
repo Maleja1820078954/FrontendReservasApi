@@ -42,13 +42,16 @@ export default function ClientList() {
   const handleEdit = (client) => setEditingClient(client);
 
   return (
-    <div>
-      <h1>Clientes</h1>
-      <ClientForm 
-        onSuccess={() => { setEditingClient(null); }} 
-        editingClient={editingClient} 
-      />
-      <table border="1" cellPadding="8">
+    <div className="container">
+      <h1 className="center">Clientes</h1>
+      <div className="card">
+        <ClientForm 
+          onSuccess={() => { setEditingClient(null); }} 
+          editingClient={editingClient} 
+        />
+      </div>
+      <div className="card">
+        <table className="table">
         <thead>
           <tr>
             <th>Nombre</th>
@@ -64,13 +67,14 @@ export default function ClientList() {
               <td>{c.email}</td>
               <td>{c.phone}</td>
               <td>
-                <button onClick={() => handleEdit(c)}>Editar</button>
-                <button onClick={() => handleDelete(c.id)}>Eliminar</button>
+                <button className="btn btn-outline" onClick={() => handleEdit(c)}>Editar</button>
+                <button className="btn btn-danger" onClick={() => handleDelete(c.id)}>Eliminar</button>
               </td>
             </tr>
           ))}
         </tbody>
-      </table>
+        </table>
+      </div>
     </div>
   );
 }
