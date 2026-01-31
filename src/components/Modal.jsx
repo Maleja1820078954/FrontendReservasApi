@@ -8,7 +8,7 @@ export default function Modal({ isOpen, title, children, onClose }) {
       <div className="modal">
         <div className="modal-header">
           <h2>{title}</h2>
-          <button onClick={onClose} className="btn modal-close">X</button>
+          <button onClick={onClose} className="btn btn-outline">X</button>
         </div>
         <div className="modal-body">
           {children}

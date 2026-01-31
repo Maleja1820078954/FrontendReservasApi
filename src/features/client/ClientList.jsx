@@ -44,36 +44,40 @@ export default function ClientList() {
   return (
     <div className="container">
       <h1 className="center">Clientes</h1>
-      <div className="card">
-        <ClientForm 
-          onSuccess={() => { setEditingClient(null); }} 
-          editingClient={editingClient} 
-        />
-      </div>
-      <div className="card">
-        <table className="table">
-        <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Email</th>
-            <th>Teléfono</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          {clients.map(c => (
-            <tr key={c.id}>
-              <td>{c.fullName}</td>
-              <td>{c.email}</td>
-              <td>{c.phone}</td>
-              <td>
-                <button className="btn btn-outline" onClick={() => handleEdit(c)}>Editar</button>
-                <button className="btn btn-danger" onClick={() => handleDelete(c.id)}>Eliminar</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-        </table>
+
+      <ClientForm 
+        onSuccess={() => { setEditingClient(null); }} 
+        editingClient={editingClient} 
+      />
+
+      <div className="card table-wrapper">
+        <div className="table-container">
+          <table className="table">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Teléfono</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              {clients.map(c => (
+                <tr key={c.id}>
+                  <td>{c.fullName}</td>
+                  <td className="muted">{c.email}</td>
+                  <td>{c.phone}</td>
+                  <td>
+                    <div className="actions">
+                      <button className="btn btn-outline btn-sm" onClick={() => handleEdit(c)}>Editar</button>
+                      <button className="btn btn-danger btn-sm" onClick={() => handleDelete(c.id)}>Eliminar</button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

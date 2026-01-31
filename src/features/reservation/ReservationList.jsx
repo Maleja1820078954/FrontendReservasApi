@@ -39,37 +39,45 @@ export default function ReservationList() {
   };
 
   return (
-    <div>
-      <h1>Reservas</h1>
+    <div className="container">
+      <h1 className="center">Reservas</h1>
+
       <ReservationForm 
         onSuccess={() => setEditingReservation(null)} 
         editingReservation={editingReservation} 
       />
-      <table border="1" cellPadding="8">
-        <thead>
-          <tr>
-            <th>Cliente</th>
-            <th>Servicio</th>
-            <th>Fecha</th>
-            <th>Estado</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          {reservations.map(r => (
-            <tr key={r.id}>
-              <td>{r.client.fullName}</td>
-              <td>{r.service.name}</td>
-              <td>{new Date(r.date).toLocaleString()}</td>
-              <td>{r.status}</td>
-              <td>
-                <button onClick={() => setEditingReservation(r)}>Editar</button>
-                <button onClick={() => handleDelete(r.id)}>Eliminar</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+
+      <div className="card table-wrapper">
+        <div className="table-container">
+          <table className="table">
+            <thead>
+              <tr>
+                <th>Cliente</th>
+                <th>Servicio</th>
+                <th>Fecha</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              {reservations.map(r => (
+                <tr key={r.id}>
+                  <td>{r.client.fullName}</td>
+                  <td>{r.service.name}</td>
+                  <td>{new Date(r.date).toLocaleString()}</td>
+                  <td className="muted">{r.status}</td>
+                  <td>
+                    <div className="actions">
+                      <button className="btn btn-outline btn-sm" onClick={() => setEditingReservation(r)}>Editar</button>
+                      <button className="btn btn-danger btn-sm" onClick={() => handleDelete(r.id)}>Eliminar</button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 }

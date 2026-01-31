@@ -45,11 +45,21 @@ export default function ServiceForm({ onSuccess, editingService }) {
 
   return (
     <div>
-      {message && <p>{message}</p>}
-      <form onSubmit={handleSubmit}>
-        <input placeholder="Nombre del servicio" value={name} onChange={e => setName(e.target.value)} />
-        <input placeholder="Precio" type="number" value={price} onChange={e => setPrice(e.target.value)} />
-        <button type="submit">{editingService ? "Actualizar" : "Agregar Servicio"}</button>
+      {message && <p className="muted">{message}</p>}
+      <form onSubmit={handleSubmit} className="form card">
+        <div className="field">
+          <label className="form-label">Nombre del servicio</label>
+          <input className="form-control" placeholder="Nombre del servicio" value={name} onChange={e => setName(e.target.value)} />
+        </div>
+
+        <div className="field">
+          <label className="form-label">Precio</label>
+          <input className="form-control" placeholder="Precio" type="number" value={price} onChange={e => setPrice(e.target.value)} />
+        </div>
+
+        <div className="spaced">
+          <button className="btn btn-primary" type="submit">{editingService ? "Actualizar" : "Agregar Servicio"}</button>
+        </div>
       </form>
     </div>
   );

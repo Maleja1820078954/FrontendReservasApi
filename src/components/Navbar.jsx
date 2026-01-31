@@ -13,14 +13,17 @@ export default function Navbar() {
   if (!token) return null; // No mostrar navbar si no hay token
 
   return (
-    <nav className="navbar">
+    <nav className="navbar container">
       <ul className="nav-list">
         <li><Link to="/clients" className="nav-link">Clientes</Link></li>
         <li><Link to="/services" className="nav-link">Servicios</Link></li>
         <li><Link to="/reservations" className="nav-link">Reservas</Link></li>
-        <li><button onClick={handleLogout} className="btn btn-danger">Cerrar sesión</button></li>
       </ul>
+      <div>
+        <button className="btn btn-danger" onClick={handleLogout}>Cerrar sesión</button>
+      </div>
     </nav>
   );
 }
+
 

@@ -65,25 +65,34 @@ export default function ReservationForm({ onSuccess, editingReservation }) {
 
   return (
     <div>
-      {message && <p>{message}</p>}
-      <form onSubmit={handleSubmit}>
-        <select value={clientId} onChange={e => setClientId(e.target.value)}>
-          <option value="">Selecciona un cliente</option>
-          {clients.map(c => <option key={c.id} value={c.id}>{c.fullName}</option>)}
-        </select>
+      {message && <p className="muted">{message}</p>}
+      <form onSubmit={handleSubmit} className="form card">
+        <div className="form-row">
+          <div className="field">
+            <label className="form-label">Cliente</label>
+            <select className="form-control" value={clientId} onChange={e => setClientId(e.target.value)}>
+              <option value="">Selecciona un cliente</option>
+              {clients.map(c => <option key={c.id} value={c.id}>{c.fullName}</option>)}
+            </select>
+          </div>
 
-        <select value={serviceId} onChange={e => setServiceId(e.target.value)}>
-          <option value="">Selecciona un servicio</option>
-          {services.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
-        </select>
+          <div className="field">
+            <label className="form-label">Servicio</label>
+            <select className="form-control" value={serviceId} onChange={e => setServiceId(e.target.value)}>
+              <option value="">Selecciona un servicio</option>
+              {services.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
+            </select>
+          </div>
+        </div>
 
-        <input 
-          type="datetime-local" 
-          value={date} 
-          onChange={e => setDate(e.target.value)} 
-        />
+        <div className="field">
+          <label className="form-label">Fecha y hora</label>
+          <input className="form-control" type="datetime-local" value={date} onChange={e => setDate(e.target.value)} />
+        </div>
 
-        <button type="submit">{editingReservation ? "Actualizar" : "Crear Reserva"}</button>
+        <div className="spaced">
+          <button className="btn btn-primary" type="submit">{editingReservation ? "Actualizar" : "Crear Reserva"}</button>
+        </div>
       </form>
     </div>
   );

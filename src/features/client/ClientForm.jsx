@@ -50,11 +50,23 @@ export default function ClientForm({ onSuccess, editingClient }) {
   return (
     <div>
       {message && <p className="muted">{message}</p>}
-      <form onSubmit={handleSubmit} className="grid">
-        <input className="form-control" placeholder="Nombre" value={fullName} onChange={e => setFullName(e.target.value)} />
-        <input className="form-control" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
-        <input className="form-control" placeholder="Teléfono" value={phone} onChange={e => setPhone(e.target.value)} />
-        <div>
+      <form onSubmit={handleSubmit} className="form card">
+        <div className="form-row">
+          <div className="field">
+            <label className="form-label">Nombre</label>
+            <input className="form-control" placeholder="Nombre" value={fullName} onChange={e => setFullName(e.target.value)} />
+          </div>
+          <div className="field">
+            <label className="form-label">Email</label>
+            <input className="form-control" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
+          </div>
+          <div className="field">
+            <label className="form-label">Teléfono</label>
+            <input className="form-control" placeholder="Teléfono" value={phone} onChange={e => setPhone(e.target.value)} />
+          </div>
+        </div>
+
+        <div className="spaced">
           <button className="btn btn-primary" type="submit">{editingClient ? "Actualizar" : "Agregar Cliente"}</button>
         </div>
       </form>

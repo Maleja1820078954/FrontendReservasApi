@@ -22,27 +22,36 @@ export default function ServiceList() {
   return (
     <div className="container">
       <h1 className="center">Servicios</h1>
-      <div className="card">
-        <ServiceForm onSuccess={async () => {
-          try {
-            const res = await fetch("https://localhost:7250/api/services", { headers: authHeader() });
-            const data = await res.json();
-            setServices(data);
-          } catch (err) {
-            console.error(err);
-          }
-        }} />
-      </div>
 
-      <div className="card">
-        <ul>
-          {services.map(s => (
-            <li key={s.id} className="form-row" style={{justifyContent:'space-between'}}>
-              <span>{s.name}</span>
-              <strong>${s.price.toFixed(2)}</strong>
-            </li>
-          ))}
-        </ul>
+      <ServiceForm onSuccess={async () => {
+        try {
+          const res = await fetch("https://localhost:7250/api/services", { headers: authHeader() });
+          const data = await res.json();
+          setServices(data);
+        } catch (err) {
+          console.error(err);
+        }
+      }} />
+
+      <div className="card table-wrapper">
+        <div className="table-container">
+          <table className="table">
+            <thead>
+              <tr>
+                <th>Servicio</th>
+                <th>Precio</th>
+              </tr>
+            </thead>
+            <tbody>
+              {services.map(s => (
+                <tr key={s.id}>
+                  <td>{s.name}</td>
+                  <td>${s.price.toFixed(2)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
